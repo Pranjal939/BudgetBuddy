@@ -44,7 +44,7 @@ const Navbar = () => {
         {/* Auth Buttons */}
         <div className="bb-nav-auth">
           <Link to="/login" className="nav-btn-outline">Login</Link>
-          <Link to="/register" className="nav-btn-fill">Join Free</Link>
+          <Link to="/register" className="nav-btn-fill">Register</Link>
         </div>
 
         {/* Hamburger */}
@@ -64,7 +64,7 @@ const Navbar = () => {
           <div className="mobile-auth-row">
             <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
             <Link to="/register" onClick={() => setMenuOpen(false)} className="mobile-get-started">
-              Join Free
+              Register
             </Link>
           </div>
         </div>
