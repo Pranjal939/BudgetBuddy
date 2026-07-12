@@ -74,7 +74,7 @@ const RegisterPage = () => {
         <div className="auth-form-wrap">
           <div className="auth-form-header">
             <h3>Create Your Account 🎓</h3>
-            <p>Join 10,000+ students managing their budget</p>
+            <p>100% Free — No credit card, no hidden charges</p>
           </div>
 
           {error && <div className="auth-error">{error}</div>}

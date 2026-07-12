@@ -95,9 +95,16 @@ const HomePage = () => {
               <p className="hero-subtitle">
                 BudgetBuddy helps you track daily expenses, plan monthly budgets, set savings goals, and build smarter financial habits — all in one beautiful dashboard.
               </p>
+
+              {/* FREE Banner */}
+              <div className="free-banner">
+                <span className="free-tag">🎉 100% FREE</span>
+                <span>No credit card · No hidden charges · Always free for students</span>
+              </div>
+
               <div className="hero-actions">
                 <Link to="/register" className="btn-hero-primary">
-                  Start for Free <FaArrowRight />
+                  Get Started — It's Free <FaArrowRight />
                 </Link>
                 <button
                   className="btn-hero-outline"
@@ -409,7 +416,7 @@ const HomePage = () => {
               Create Free Account <FaArrowRight />
             </Link>
             <Link to="/login" className="btn-cta-outline">
-              I Already Have an Account
+              Already Have an Account
             </Link>
           </div>
         </div>
