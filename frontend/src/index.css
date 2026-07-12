@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0fdf4;
+  color: #1a1a1a;
+}
+
+:root {
+  --primary: #00C853;
+  --primary-dark: #00695C;
+  --primary-light: #1DE9B6;
+  --bg-dark: #00695C;
+  --bg-darker: #004D40;
+  --white: #ffffff;
+  --card-bg: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #6b7280;
+  --border: #d1fae5;
+  --shadow: 0 4px 24px rgba(0, 200, 83, 0.15);
+  --shadow-lg: 0 8px 40px rgba(0, 105, 92, 0.25);
+}
+
+html { scroll-behavior: smooth; }
+a { text-decoration: none; }
