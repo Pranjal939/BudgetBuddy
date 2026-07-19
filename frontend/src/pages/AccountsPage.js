@@ -259,7 +259,7 @@ const AccountsPage = () => {
                       <option value="">-- Select Account --</option>
                       {accounts.map(a => (
                         <option key={a.id} value={a.name}>
-                          {a.name} — ₹{a.balance.toLocaleString('en-IN')}
+                          {a.name} ({a.type}) — ₹{a.balance.toLocaleString('en-IN')}
                         </option>
                       ))}
                     </select>
@@ -270,7 +270,8 @@ const AccountsPage = () => {
                         </div>
                         <div>
                           <strong>{transfer.from}</strong>
-                          <span>Balance: ₹{(accounts.find(a=>a.name===transfer.from)?.balance||0).toLocaleString('en-IN')}</span>
+                          <span className="tap-type">{accounts.find(a=>a.name===transfer.from)?.type}</span>
+                          <span className="tap-balance">Available Balance: <strong>₹{(accounts.find(a=>a.name===transfer.from)?.balance||0).toLocaleString('en-IN')}</strong></span>
                         </div>
                       </div>
                     )}
@@ -285,7 +286,7 @@ const AccountsPage = () => {
                       <option value="">-- Select Account --</option>
                       {accounts.filter(a => a.name !== transfer.from).map(a => (
                         <option key={a.id} value={a.name}>
-                          {a.name} — ₹{a.balance.toLocaleString('en-IN')}
+                          {a.name} ({a.type}) — ₹{a.balance.toLocaleString('en-IN')}
                         </option>
                       ))}
                     </select>
@@ -296,7 +297,8 @@ const AccountsPage = () => {
                         </div>
                         <div>
                           <strong>{transfer.to}</strong>
-                          <span>Balance: ₹{(accounts.find(a=>a.name===transfer.to)?.balance||0).toLocaleString('en-IN')}</span>
+                          <span className="tap-type">{accounts.find(a=>a.name===transfer.to)?.type}</span>
+                          <span className="tap-balance">Available Balance: <strong>₹{(accounts.find(a=>a.name===transfer.to)?.balance||0).toLocaleString('en-IN')}</strong></span>
                         </div>
                       </div>
                     )}
