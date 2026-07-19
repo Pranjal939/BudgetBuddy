@@ -9,7 +9,8 @@ import {
   FaWallet, FaArrowDown, FaPiggyBank, FaChartPie,
   FaPlusCircle, FaMoneyBillWave, FaBell,
   FaExclamationTriangle, FaUtensils, FaBus, FaBook,
-  FaShoppingBag, FaFilm, FaPhone, FaHospital, FaBoxOpen
+  FaShoppingBag, FaFilm, FaPhone, FaHospital, FaBoxOpen,
+  FaCreditCard
 } from 'react-icons/fa';
 import Sidebar from '../components/Sidebar';
 import '../components/Sidebar.css';
@@ -132,6 +133,14 @@ const DashboardPage = () => {
             <div>
               <p className="db-card-label">Savings</p>
               <h3 className="db-card-value">₹{savingsGoal.toLocaleString('en-IN')}</h3>
+            </div>
+          </div>
+          <div className="db-card card-accounts">
+            <div className="db-card-icon"><FaCreditCard /></div>
+            <div>
+              <p className="db-card-label">Total Balance</p>
+              <h3 className="db-card-value">₹18,250</h3>
+              <p className="db-card-sub">Across 4 accounts</p>
             </div>
           </div>
         </div>

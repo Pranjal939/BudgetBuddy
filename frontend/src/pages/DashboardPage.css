@@ -250,3 +250,12 @@
   .db-cards { grid-template-columns: 1fr 1fr; }
   .qa-grid  { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Accounts card */
+.card-accounts .db-card-icon { background:#e8f5e9; color:#00C853; }
+.db-card-sub { font-size:0.72rem; color:#9ca3af; margin:2px 0 0; }
+
+/* 5-column cards on wide screens */
+@media (min-width: 1200px) {
+  .db-cards { grid-template-columns: repeat(5, 1fr); }
+}

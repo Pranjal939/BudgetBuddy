@@ -13,6 +13,7 @@ import GoalsPage from './pages/GoalsPage';
 import ProfilePage from './pages/ProfilePage';
 import SettingsPage from './pages/SettingsPage';
 import ContactHelpPage from './pages/ContactHelpPage';
+import AccountsPage from './pages/AccountsPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/expenses" element={<ExpenseHistoryPage />} />
       <Route path="/reports" element={<ReportsPage />} />
       <Route path="/goals" element={<GoalsPage />} />
+      <Route path="/accounts" element={<AccountsPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/settings" element={<SettingsPage />} />
       <Route path="/contact" element={<ContactHelpPage />} />

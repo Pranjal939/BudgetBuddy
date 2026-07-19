@@ -3,20 +3,22 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   FaWallet, FaHome, FaMoneyBillWave, FaPlusCircle,
   FaHistory, FaChartBar, FaBullseye, FaUserCircle,
-  FaCog, FaQuestionCircle, FaSignOutAlt, FaBars, FaTimes
+  FaCog, FaQuestionCircle, FaSignOutAlt, FaBars, FaTimes,
+  FaCreditCard
 } from 'react-icons/fa';
 import './Sidebar.css';
 
 const navItems = [
-  { path: '/dashboard', icon: <FaHome />,          label: 'Dashboard' },
-  { path: '/budget',    icon: <FaMoneyBillWave />,  label: 'Monthly Budget' },
-  { path: '/add-expense', icon: <FaPlusCircle />,   label: 'Add Expense' },
-  { path: '/expenses',  icon: <FaHistory />,        label: 'Expense History' },
-  { path: '/reports',   icon: <FaChartBar />,       label: 'Reports' },
-  { path: '/goals',     icon: <FaBullseye />,       label: 'Savings Goals' },
-  { path: '/profile',   icon: <FaUserCircle />,     label: 'Profile' },
-  { path: '/settings',  icon: <FaCog />,            label: 'Settings' },
-  { path: '/contact',   icon: <FaQuestionCircle />, label: 'Help & Contact' },
+  { path: '/dashboard',   icon: <FaHome />,          label: 'Dashboard' },
+  { path: '/budget',      icon: <FaMoneyBillWave />,  label: 'Monthly Budget' },
+  { path: '/add-expense', icon: <FaPlusCircle />,     label: 'Add Expense' },
+  { path: '/expenses',    icon: <FaHistory />,        label: 'Expense History' },
+  { path: '/accounts',    icon: <FaCreditCard />,     label: 'Accounts' },
+  { path: '/reports',     icon: <FaChartBar />,       label: 'Reports' },
+  { path: '/goals',       icon: <FaBullseye />,       label: 'Savings Goals' },
+  { path: '/profile',     icon: <FaUserCircle />,     label: 'Profile' },
+  { path: '/settings',    icon: <FaCog />,            label: 'Settings' },
+  { path: '/contact',     icon: <FaQuestionCircle />, label: 'Help & Contact' },
 ];
 
 const Sidebar = () => {

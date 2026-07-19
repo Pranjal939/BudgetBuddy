@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { FaPlusCircle, FaCheckCircle, FaUtensils, FaBus, FaBook, FaShoppingBag, FaFilm, FaPhone, FaHospital, FaBoxOpen } from 'react-icons/fa';
+import {
+  FaPlusCircle, FaCheckCircle, FaUtensils, FaBus, FaBook,
+  FaShoppingBag, FaFilm, FaPhone, FaHospital, FaBoxOpen,
+  FaCreditCard
+} from 'react-icons/fa';
 import Sidebar from '../components/Sidebar';
 import '../components/Sidebar.css';
 import './InnerPages.css';
@@ -15,20 +19,29 @@ const categories = [
   { id:'Others',        icon:<FaBoxOpen />,     color:'#9E9E9E' },
 ];
 
-const paymentMethods = ['Cash','UPI','Debit Card','Credit Card','Net Banking'];
+/* Same accounts as AccountsPage — in real app this comes from backend */
+const userAccounts = [
+  { id:1, name:'SBI Savings',  type:'Bank Account' },
+  { id:2, name:'Cash',         type:'Cash'         },
+  { id:3, name:'Google Pay',   type:'UPI / Wallet' },
+  { id:4, name:'PhonePe',      type:'UPI / Wallet' },
+];
 
 const AddExpensePage = () => {
   const today = new Date().toISOString().split('T')[0];
-  const [form, setForm] = useState({ name:'', amount:'', category:'', method:'Cash', date:today, notes:'' });
+  const [form, setForm] = useState({
+    name:'', amount:'', category:'', paidFrom:'', date:today, notes:''
+  });
   const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim())   e.name     = 'Expense name is required';
+    if (!form.name.trim())            e.name     = 'Expense name is required';
     if (!form.amount || form.amount <= 0) e.amount = 'Enter a valid amount';
-    if (!form.category)      e.category = 'Please select a category';
-    if (!form.date)          e.date     = 'Date is required';
+    if (!form.category)               e.category = 'Please select a category';
+    if (!form.paidFrom)               e.paidFrom = 'Please select an account';
+    if (!form.date)                   e.date     = 'Date is required';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -37,7 +50,7 @@ const AddExpensePage = () => {
     e.preventDefault();
     if (!validate()) return;
     setSuccess(true);
-    setForm({ name:'', amount:'', category:'', method:'Cash', date:today, notes:'' });
+    setForm({ name:'', amount:'', category:'', paidFrom:'', date:today, notes:'' });
     setTimeout(() => setSuccess(false), 4000);
   };
 
@@ -50,7 +63,11 @@ const AddExpensePage = () => {
           <p className="page-sub">Record a new expense to your budget tracker</p>
         </div>
 
-        {success && <div className="success-toast"><FaCheckCircle /> Expense added successfully!</div>}
+        {success && (
+          <div className="success-toast">
+            <FaCheckCircle /> Expense added! Balance updated in your account.
+          </div>
+        )}
 
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -83,7 +100,9 @@ const AddExpensePage = () => {
                     {categories.map(cat => (
                       <button type="button" key={cat.id}
                         className={`cat-select-btn ${form.category===cat.id?'selected':''}`}
-                        style={form.category===cat.id ? {background:cat.color, borderColor:cat.color, color:'#fff'} : {borderColor:cat.color, color:cat.color}}
+                        style={form.category===cat.id
+                          ? {background:cat.color, borderColor:cat.color, color:'#fff'}
+                          : {borderColor:cat.color, color:cat.color}}
                         onClick={() => setForm({...form, category:cat.id})}>
                         <span>{cat.icon}</span>
                         <span>{cat.id}</span>
@@ -94,16 +113,30 @@ const AddExpensePage = () => {
                 </div>
 
                 <div className="row g-3">
-                  {/* Payment Method */}
+                  {/* Paid From — Account */}
                   <div className="col-md-6">
                     <div className="form-group-bb">
-                      <label>Payment Method</label>
-                      <select className="bb-form-input" value={form.method}
-                        onChange={(e) => setForm({...form, method:e.target.value})}>
-                        {paymentMethods.map(m => <option key={m}>{m}</option>)}
+                      <label>
+                        <FaCreditCard style={{marginRight:6, color:'#00C853'}} />
+                        Paid From <span className="req">*</span>
+                      </label>
+                      <select className={`bb-form-input ${errors.paidFrom?'input-err':''}`}
+                        value={form.paidFrom}
+                        onChange={(e) => setForm({...form, paidFrom:e.target.value})}>
+                        <option value="">-- Select Account --</option>
+                        {userAccounts.map(acc => (
+                          <option key={acc.id} value={acc.name}>
+                            {acc.name} ({acc.type})
+                          </option>
+                        ))}
                       </select>
+                      {errors.paidFrom && <p className="err-text">{errors.paidFrom}</p>}
+                      <p className="paid-from-note">
+                        Balance will be deducted from selected account
+                      </p>
                     </div>
                   </div>
+
                   {/* Date */}
                   <div className="col-md-6">
                     <div className="form-group-bb">

@@ -429,3 +429,11 @@
   .goals-grid { grid-template-columns:1fr; }
   .cat-select-grid { grid-template-columns:repeat(2,1fr); }
 }
+
+/* Paid From Note */
+.paid-from-note {
+  font-size: 0.76rem;
+  color: #00695C;
+  margin-top: 5px;
+  font-weight: 500;
+}

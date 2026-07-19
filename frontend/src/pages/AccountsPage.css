@@ -1,0 +1,200 @@
+/* ── Total Balance Banner ── */
+.total-balance-card {
+  background: linear-gradient(135deg, #004D40 0%, #00897B 100%);
+  border-radius: 18px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(0,105,92,0.3);
+}
+
+.tb-label {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.88rem;
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+
+.tb-value {
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.tb-accounts-count {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Accounts Grid ── */
+.accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+/* ── Account Card ── */
+.account-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #d1fae5;
+  box-shadow: 0 2px 12px rgba(0,200,83,0.08);
+  transition: all 0.25s;
+  cursor: default;
+}
+
+.account-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,200,83,0.15);
+}
+
+.acc-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.acc-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.acc-actions { display: flex; gap: 6px; }
+
+.acc-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #004D40;
+  margin: 0 0 6px;
+}
+
+.acc-type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.acc-balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.acc-balance-label { font-size: 0.78rem; color: #6b7280; }
+.acc-balance-value { font-size: 1.2rem; font-weight: 900; }
+
+.acc-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.acc-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.acc-bar-pct { font-size: 0.74rem; font-weight: 600; }
+
+/* Add Card */
+.acc-add-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px dashed #d1fae5 !important;
+  cursor: pointer;
+  color: #4b7a6e;
+  background: #f9fffe !important;
+  min-height: 180px;
+  box-shadow: none !important;
+}
+
+.acc-add-card:hover {
+  border-color: #00C853 !important;
+  color: #00C853;
+  background: #f0fdf4 !important;
+}
+
+.acc-add-icon { font-size: 2rem; }
+.acc-add-card p { font-size: 0.9rem; font-weight: 600; margin: 0; }
+
+/* Summary Cards */
+.acc-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px !important;
+}
+
+.acc-sum-icon {
+  width: 50px; height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.acc-sum-label { font-size: 0.8rem; color: #6b7280; margin: 0 0 4px; }
+.acc-sum-value { font-size: 1.2rem; font-weight: 800; margin: 0 0 2px; }
+.acc-sum-count { font-size: 0.75rem; color: #9ca3af; }
+
+/* Credit amount color */
+.amount-credit { color: #00C853 !important; }
+
+/* Quick Name Buttons */
+.quick-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.quick-name-btn {
+  padding: 6px 14px;
+  border: 2px solid #d1fae5;
+  border-radius: 20px;
+  background: #f9fffe;
+  color: #4b7a6e;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-name-btn:hover { border-color: #00C853; color: #00695C; }
+.quick-name-btn.selected { background: #00C853; border-color: #00C853; color: #fff; }
+
+/* Responsive */
+@media (max-width: 1200px) { .accounts-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { .accounts-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px)  {
+  .accounts-grid { grid-template-columns: 1fr; }
+  .total-balance-card { flex-direction: column; gap: 16px; text-align: center; }
+}
