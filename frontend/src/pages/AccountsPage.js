@@ -56,6 +56,7 @@ const AccountsPage = () => {
   const [editId, setEditId]           = useState(null);
   const [deleteId, setDeleteId]       = useState(null);
   const [toast, setToast]             = useState('');
+  const [transferSuccess, setTransferSuccess] = useState(null);
   const [form, setForm]               = useState({ name: '', type: 'Bank Account', balance: '' });
   const [transfer, setTransfer]       = useState({ from: '', to: '', amount: '', note: '' });
   const [transferErr, setTransferErr] = useState('');
@@ -115,7 +116,11 @@ const AccountsPage = () => {
       ...activity,
     ]);
 
-    showToast(`✅ ₹${amt.toLocaleString('en-IN')} transferred from ${transfer.from} to ${transfer.to}`);
+    showToast(`✅ Transfer Successful! ₹${amt.toLocaleString('en-IN')} transferred from ${transfer.from} to ${transfer.to}`);
+    setTransferSuccess({ amt, from: transfer.from, to: transfer.to,
+      fromBefore: fromAcc.balance, fromAfter: fromAcc.balance - amt,
+      toAcc: accounts.find(a => a.name === transfer.to),
+    });
     setTransfer({ from: '', to: '', amount: '', note: '' });
     setShowTransfer(false);
   };
@@ -142,6 +147,35 @@ const AccountsPage = () => {
         </div>
 
         {toast && <div className="success-toast"><FaCheckCircle /> {toast}</div>}
+
+        {/* Transfer Success Banner */}
+        {transferSuccess && (
+          <div className="transfer-success-banner">
+            <button className="tsb-close" onClick={() => setTransferSuccess(null)}><FaTimes /></button>
+            <div className="tsb-icon"><FaCheckCircle /></div>
+            <div className="tsb-body">
+              <h5>Transfer Successful! 🎉</h5>
+              <p>
+                <strong>₹{transferSuccess.amt.toLocaleString('en-IN')}</strong> transferred from{' '}
+                <strong>{transferSuccess.from}</strong> to <strong>{transferSuccess.to}</strong>
+              </p>
+              <div className="tsb-details">
+                <div className="tsb-acc">
+                  <span className="tsb-acc-name">{transferSuccess.from}</span>
+                  <span className="tsb-old">₹{transferSuccess.fromBefore.toLocaleString('en-IN')}</span>
+                  <span className="tsb-arrow">→</span>
+                  <span className="tsb-new">₹{transferSuccess.fromAfter.toLocaleString('en-IN')}</span>
+                </div>
+                <div className="tsb-acc">
+                  <span className="tsb-acc-name">{transferSuccess.to}</span>
+                  <span className="tsb-old">₹{(transferSuccess.toAcc?.balance || 0).toLocaleString('en-IN')}</span>
+                  <span className="tsb-arrow">→</span>
+                  <span className="tsb-new">₹{((transferSuccess.toAcc?.balance || 0) + transferSuccess.amt).toLocaleString('en-IN')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Total Balance Banner */}
         <div className="total-balance-card">

@@ -358,3 +358,102 @@
   color: #00695C;
   font-weight: 800;
 }
+
+/* ── Transfer Success Banner ── */
+.transfer-success-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: linear-gradient(135deg, #e8f5e9, #f0fdf4);
+  border: 2px solid #00C853;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,200,83,0.2);
+  animation: slideDown 0.35s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tsb-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.tsb-close:hover { color: #ef4444; }
+
+.tsb-icon {
+  font-size: 2rem;
+  color: #00C853;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tsb-body { flex: 1; }
+
+.tsb-body h5 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #004D40;
+  margin: 0 0 6px;
+}
+
+.tsb-body > p {
+  font-size: 0.92rem;
+  color: #4b7a6e;
+  margin: 0 0 14px;
+}
+
+.tsb-body > p strong { color: #004D40; }
+
+/* Account rows inside banner */
+.tsb-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tsb-acc {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #d1fae5;
+  border-radius: 10px;
+  padding: 10px 14px;
+  flex-wrap: wrap;
+}
+
+.tsb-acc-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #004D40;
+  min-width: 100px;
+}
+
+.tsb-old {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.tsb-arrow {
+  color: #00C853;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.tsb-new {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #00695C;
+}
